@@ -1,0 +1,91 @@
+/* Container spacing */
+.container {
+  max-width: 1100px;
+}
+
+/* Remove card heavy styling */
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+/* Header style like image */
+.card-header {
+  background: #fff !important;
+  color: #000 !important;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 15px;
+}
+
+/* + New button */
+.card-header .btn {
+  font-size: 14px;
+  padding: 4px 10px;
+}
+
+/* Table style */
+.table {
+  font-size: 14px;
+}
+
+.table thead {
+  background-color: #f8f9fa;
+}
+
+.table th {
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+  padding: 8px;
+}
+
+/* Action buttons */
+.btn-sm {
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+/* Edit button */
+.btn-warning {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: #218838;
+}
+
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+}
+
+.modal-backdrop {
+  z-index: 1040;
+}
+
+.modal {
+  z-index: 1050;
+}
+
+/* Delete button */
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Remove dark header look */
+.table-dark {
+  --bs-table-bg: #f8f9fa;
+  --bs-table-color: #000;
+}
+
+/* Pagination spacing */
+.pagination {
+  margin-top: 10px;
+}

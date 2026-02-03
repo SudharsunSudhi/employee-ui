@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="card">
+
+    <!-- HEADER -->
+    <div class="card-header d-flex justify-content-between bg-primary text-white">
+      <h4>Employee Management</h4>
+      <button class="btn btn-light" (click)="addEmployee()">Add Employee</button>
+    </div>
+
+    <!-- BODY -->
+    <div class="card-body">
+
+      <input class="form-control mb-3"
+             placeholder="Search"
+             [(ngModel)]="searchText">
+
+      <table class="table table-bordered text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let e of filteredEmployees | paginate:{ itemsPerPage:5, currentPage:page }">
+            <td>{{ e.id }}</td>
+            <td>{{ e.firstName }} {{ e.lastName }}</td>
+            <td>{{ e.department }}</td>
+            <td>{{ e.salary }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm me-1" (click)="edit(e)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="delete(e.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div *ngIf="showModal" class="modal-wrapper">
+
+  <div class="modal-backdrop show"></div>
+
+  <div class="modal d-block">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header bg-primary text-white">
+          <h5>{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h5>
+          <button class="btn-close btn-close-white" (click)="closeModal()"></button>
+        </div>
+
+        <div class="modal-body">
+          <input class="form-control mb-2" placeholder="First Name" [(ngModel)]="emp.firstName">
+          <input class="form-control mb-2" placeholder="Last Name" [(ngModel)]="emp.lastName">
+          <input class="form-control mb-2" placeholder="Email" [(ngModel)]="emp.email">
+          <input class="form-control mb-2" placeholder="Department" [(ngModel)]="emp.department">
+          <input class="form-control mb-2" type="number" placeholder="Salary" [(ngModel)]="emp.salary">
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success" (click)="save()">
+            {{ isEditMode ? 'Update' : 'Save' }}
+          </button>
+          <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
